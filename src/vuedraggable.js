@@ -165,6 +165,7 @@ const draggableComponent = defineComponent({
     $attrs: {
       handler(newOptionValue) {
         const { _sortable } = this;
+        if (!_sortable) return; // because layzy mounted, this could be null
         getValidSortableEntries(newOptionValue).forEach(([key, value]) => {
           _sortable.option(key, value);
         });
